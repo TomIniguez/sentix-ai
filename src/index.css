@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-base text-slate-100 font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  /* Brand gradient text */
+  .text-gradient-brand {
+    @apply bg-gradient-to-r from-brandFrom to-brandTo bg-clip-text text-transparent;
+  }
+
+  /* Thin custom scrollbars for the dark UI */
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
+  }
+  .scroll-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scroll-thin::-webkit-scrollbar-thumb {
+    background-color: #334155;
+    border-radius: 9999px;
+  }
+  .scroll-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
