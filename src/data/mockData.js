@@ -134,12 +134,19 @@ export const temasFeed = [
 // Client companies (Sentix customers) — Empresas widget / persona companies
 // ---------------------------------------------------------------------------
 export const clientCompanies = [
-  { name: 'Finvex', domain: 'finvex.io', sector: 'Fintech', personas: 128, events: 1240 },
-  { name: 'Cloudbit', domain: 'cloudbit.app', sector: 'B2B SaaS', personas: 96, events: 980 },
-  { name: 'Naranja Pay', domain: 'naranja-pay.com', sector: 'Fintech', personas: 74, events: 712 },
-  { name: 'Aurora Retail', domain: 'aurora-retail.com', sector: 'Enterprise', personas: 61, events: 540 },
-  { name: 'Helix Health', domain: 'helixhealth.io', sector: 'Enterprise', personas: 43, events: 388 },
+  { name: 'Finvex', domain: 'finvex.io', sector: 'Fintech', personas: 128, events: 1240, churn: 'Alto', sentiment: 'negativo', resolution: 9, plan: 'Enterprise' },
+  { name: 'Cloudbit', domain: 'cloudbit.app', sector: 'B2B SaaS', personas: 96, events: 980, churn: 'Medio', sentiment: 'neutral', resolution: 14, plan: 'Growth' },
+  { name: 'Naranja Pay', domain: 'naranja-pay.com', sector: 'Fintech', personas: 74, events: 712, churn: 'Medio', sentiment: 'neutral', resolution: 12, plan: 'Enterprise' },
+  { name: 'Aurora Retail', domain: 'aurora-retail.com', sector: 'Enterprise', personas: 61, events: 540, churn: 'Bajo', sentiment: 'positivo', resolution: 22, plan: 'Enterprise' },
+  { name: 'Helix Health', domain: 'helixhealth.io', sector: 'Enterprise', personas: 43, events: 388, churn: 'Bajo', sentiment: 'positivo', resolution: 26, plan: 'Growth' },
+  { name: 'Tienda Norte', domain: 'tienda-norte.com', sector: 'B2B SaaS', personas: 31, events: 274, churn: 'Alto', sentiment: 'muyNegativo', resolution: 4, plan: 'Starter' },
 ]
+
+export const sectorColors = {
+  Fintech: '#3B82F6',
+  'B2B SaaS': '#8B5CF6',
+  Enterprise: '#10B981',
+}
 
 // ---------------------------------------------------------------------------
 // Personas (customer risk profiles) — spec rows + extensions, rebranded
@@ -203,3 +210,103 @@ export const trendSeries = [
 ]
 
 export const dateFilters = ['Hoy', 'Últimos 7 días', 'Últimos 30 días', 'Este trimestre']
+
+// ---------------------------------------------------------------------------
+// Listas — saved segments of personas / hallazgos
+// ---------------------------------------------------------------------------
+export const listas = [
+  { name: 'Clientes en riesgo de churn', type: 'Personas', count: 24, color: '#EF4444', description: 'Personas con riesgo de abandono Alto en los últimos 30 días.', owner: 'Tomás Iñiguez', updated: 'hace 2 h', pinned: true },
+  { name: 'Fricción en onboarding', type: 'Hallazgos', count: 12, color: '#F97316', description: 'Hallazgos de categoría Fricción detectados durante el alta de usuarios.', owner: 'Tomás Iñiguez', updated: 'hace 5 h', pinned: true },
+  { name: 'Feedback positivo Q1', type: 'Hallazgos', count: 8, color: '#22C55E', description: 'Comentarios positivos para destacar en el reporte trimestral.', owner: 'Malena Rivas', updated: 'hace 1 día', pinned: false },
+  { name: 'Cuentas Enterprise clave', type: 'Empresas', count: 5, color: '#3B82F6', description: 'Empresas Enterprise con mayor volumen de eventos a monitorear.', owner: 'Tomás Iñiguez', updated: 'hace 2 días', pinned: false },
+  { name: 'Problemas de facturación', type: 'Hallazgos', count: 9, color: '#8B5CF6', description: 'Hallazgos relacionados con errores y demoras en la facturación recurrente.', owner: 'Daniel Soto', updated: 'hace 3 días', pinned: false },
+  { name: 'Promotores NPS', type: 'Personas', count: 17, color: '#10B981', description: 'Personas con sentimiento positivo y alta tasa de resolución.', owner: 'Malena Rivas', updated: 'hace 4 días', pinned: false },
+]
+
+// ---------------------------------------------------------------------------
+// Investigación — Laboratorio de Clientes IA (synthetic users / survey sim)
+// ---------------------------------------------------------------------------
+export const simulationScenario = {
+  surveyType: 'CSAT',
+  channel: 'Email',
+  audience: 'Clientes activos · Fintech',
+  question: '¿Qué tan satisfecho estás con la rapidez de nuestro soporte tras tu último ticket?',
+  sampleSize: 1200,
+}
+
+// Predicted outcome of running the survey against synthetic users
+export const simulationResults = {
+  predictedCsat: 3.4, // out of 5
+  predictedResponseRate: 41, // %
+  fatigueRisk: 'Medio',
+  sentimentImpact: 'neutral',
+  // predicted distribution of 1-5 star responses
+  distribution: [
+    { score: '1★', value: 12 },
+    { score: '2★', value: 18 },
+    { score: '3★', value: 27 },
+    { score: '4★', value: 28 },
+    { score: '5★', value: 15 },
+  ],
+}
+
+export const syntheticUsers = [
+  { name: 'Perfil — Detractor sensible', segment: 'Fintech · Churn alto', reaction: 'muyNegativo', score: 2, note: 'Percibe la pregunta como genérica tras una mala experiencia reciente.' },
+  { name: 'Perfil — Usuario neutral', segment: 'B2B SaaS · Activo', reaction: 'neutral', score: 3, note: 'Responde si el correo llega fuera del horario laboral.' },
+  { name: 'Perfil — Promotor leal', segment: 'Enterprise · Bajo riesgo', reaction: 'positivo', score: 5, note: 'Alta probabilidad de responder y recomendar el servicio.' },
+  { name: 'Perfil — Ocupado/saturado', segment: 'Fintech · Alta actividad', reaction: 'negativo', score: 2, note: 'Riesgo de survey fatigue: recibió 3 encuestas este mes.' },
+]
+
+export const simulationHistory = [
+  { name: 'CSAT post-resolución · v3', date: '2026-06-04', csat: 3.4, responseRate: 41, status: 'Simulado' },
+  { name: 'NPS trimestral · Enterprise', date: '2026-05-28', csat: 4.1, responseRate: 53, status: 'Enviado' },
+  { name: 'CSAT onboarding · Fintech', date: '2026-05-19', csat: 2.9, responseRate: 34, status: 'Descartado' },
+]
+
+// ---------------------------------------------------------------------------
+// Informes — executive reports
+// ---------------------------------------------------------------------------
+export const informes = [
+  { title: 'Resumen Ejecutivo de Sentimiento', type: 'Sentimiento', period: 'Mayo 2026', generated: 'hace 2 días', status: 'Listo', metricLabel: 'Sentimiento promedio', metric: '😐 Neutral', accent: '#F59E0B' },
+  { title: 'Predicción de Abandono (Churn)', type: 'Predicción', period: 'Q2 2026', generated: 'hace 3 días', status: 'Listo', metricLabel: 'Cuentas en riesgo alto', metric: '2 empresas', accent: '#EF4444' },
+  { title: 'Análisis de Fricción en Soporte', type: 'Fricción', period: 'Últimos 30 días', generated: 'hace 5 días', status: 'Listo', metricLabel: 'Hallazgos de fricción', metric: '92 incidentes', accent: '#F97316' },
+  { title: 'Tasa de Resolución por Tema', type: 'Operaciones', period: 'Q2 2026', generated: 'hace 1 semana', status: 'Listo', metricLabel: 'Resolución global', metric: '6.7%', accent: '#10B981' },
+  { title: 'Reporte de Categorías de Hallazgos', type: 'Hallazgos', period: 'Mayo 2026', generated: 'Programado', status: 'Programado', metricLabel: 'Próxima generación', metric: '01/07/2026', accent: '#8B5CF6' },
+]
+
+export const informeHighlights = [
+  { label: 'Hallazgos analizados', value: '3.187' },
+  { label: 'Temas detectados', value: '1.882' },
+  { label: 'Personas monitoreadas', value: '433' },
+  { label: 'Resolución global', value: '6.7%' },
+]
+
+// ---------------------------------------------------------------------------
+// Conexiones — CRM / support integrations (Mi Empresa › Conexiones)
+// ---------------------------------------------------------------------------
+export const integrations = [
+  { name: 'Intercom', category: 'Plataforma de mensajería al cliente', description: 'Sincroniza las conversaciones de clientes desde Intercom para analizar e identificar oportunidades de mejora de tu producto y servicio.', status: 'available', color: '#1F8DED', icon: 'Intercom' },
+  { name: 'Zendesk', category: 'Plataforma de soporte al cliente', description: 'Sincroniza tickets de soporte y comentarios de clientes para generar insights sobre la calidad de tu producto y servicio.', status: 'connected', connectedTo: 'sentix-demo.zendesk.com', color: '#03363D', icon: 'Zendesk' },
+  { name: 'Gorgias', category: 'Soporte al cliente para e-commerce', description: 'Conecta tu soporte al cliente de e-commerce para analizar interacciones con clientes y mejorar la calidad del servicio.', status: 'available', color: '#1B1B3A', icon: 'Gorgias' },
+  { name: 'Freshdesk', category: 'Soporte al cliente y tickets', description: 'Conecte su cuenta de Freshdesk para sincronizar tickets y generar insights de los datos de soporte al cliente.', status: 'available', color: '#25C16F', icon: 'Freshdesk' },
+  { name: 'Freshchat', category: 'Mensajería al cliente y chat en vivo', description: 'Conecte su cuenta de Freshchat para sincronizar conversaciones y datos de clientes para mejores insights de soporte.', status: 'available', color: '#3A9E4A', icon: 'Freshchat' },
+]
+
+// ---------------------------------------------------------------------------
+// System / settings (Configuración)
+// ---------------------------------------------------------------------------
+export const appVersion = '1.9.2'
+
+export const whatsNew = [
+  'Una de nuestras actualizaciones más grandes hasta la fecha ya está aquí.',
+  'Las Pruebas de Hipótesis salen de beta y son ilimitadas en los planes Starter, Pro y Scale.',
+  'Nuevo Laboratorio de Clientes IA con usuarios sintéticos para simular encuestas CSAT/NPS.',
+  'Mejoras de rendimiento en los paneles de Hallazgos y Temas.',
+]
+
+export const currentUser = {
+  firstName: 'Tomás',
+  lastName: 'Iñiguez',
+  email: 'tomas.iniguez@sentix.ai',
+  initials: 'TI',
+}

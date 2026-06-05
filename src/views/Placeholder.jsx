@@ -10,7 +10,7 @@ export default function Placeholder({ icon: Icon = Sparkles, title, description 
           <Sparkles size={12} className="text-white" />
         </span>
       </span>
-      <h2 className="text-2xl font-bold text-white">{title}</h2>
+      <h2 className="text-2xl font-bold text-content">{title}</h2>
       <span className="mt-3 inline-flex items-center rounded-full border border-stroke bg-card px-3 py-1 text-xs font-medium text-muted">
         Próximamente
       </span>

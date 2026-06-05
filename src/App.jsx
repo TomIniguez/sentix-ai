@@ -4,29 +4,32 @@ import InicioView from './views/InicioView'
 import HallazgosView from './views/HallazgosView'
 import TemasView from './views/TemasView'
 import PersonasView from './views/PersonasView'
+import EmpresasView from './views/EmpresasView'
+import ListasView from './views/ListasView'
+import InvestigacionView from './views/InvestigacionView'
+import InformesView from './views/InformesView'
+import ConfiguracionView from './views/ConfiguracionView'
+import ConexionesView from './views/ConexionesView'
+import AjusteModeloView from './views/AjusteModeloView'
 import Placeholder from './views/Placeholder'
-import { Building2, ListChecks, FlaskConical, FileBarChart } from 'lucide-react'
+import { UsersRound, CreditCard, Building } from 'lucide-react'
 
+// Mi Empresa sub-pages without a dedicated screen yet → polished placeholders.
 const PLACEHOLDERS = {
-  empresas: {
-    icon: Building2,
-    title: 'Empresas',
-    description: 'Próximamente: vista consolidada de cada empresa cliente, con volumen de eventos, sentimiento agregado y riesgo de churn a nivel cuenta.',
+  equipo: {
+    icon: UsersRound,
+    title: 'Equipo',
+    description: 'Próximamente: gestión de miembros del equipo, roles y permisos para tu organización en Sentix AI.',
   },
-  listas: {
-    icon: ListChecks,
-    title: 'Listas',
-    description: 'Próximamente: segmentos guardados de personas y hallazgos para seguimiento y campañas de retención.',
+  facturacion: {
+    icon: CreditCard,
+    title: 'Facturación',
+    description: 'Próximamente: plan de suscripción, métodos de pago, consumo de tickets analizados y facturas descargables.',
   },
-  investigacion: {
-    icon: FlaskConical,
-    title: 'Investigación',
-    description: 'Próximamente: Laboratorio de Clientes IA con usuarios sintéticos para simular encuestas CSAT/NPS antes de enviarlas.',
-  },
-  informes: {
-    icon: FileBarChart,
-    title: 'Informes',
-    description: 'Próximamente: reportes ejecutivos automáticos sobre sentimiento, fricción y predicción de abandono, exportables a PDF.',
+  'empresa-config': {
+    icon: Building,
+    title: 'Configuración de Empresa',
+    description: 'Próximamente: datos de la organización, dominio, integraciones por defecto y políticas a nivel cuenta.',
   },
 }
 
@@ -43,6 +46,20 @@ export default function App() {
         return <TemasView />
       case 'personas':
         return <PersonasView />
+      case 'empresas':
+        return <EmpresasView />
+      case 'listas':
+        return <ListasView />
+      case 'investigacion':
+        return <InvestigacionView />
+      case 'informes':
+        return <InformesView />
+      case 'configuracion':
+        return <ConfiguracionView />
+      case 'conexiones':
+        return <ConexionesView />
+      case 'ajuste-modelo':
+        return <AjusteModeloView />
       default: {
         const p = PLACEHOLDERS[active]
         return p ? <Placeholder {...p} /> : <InicioView onNavigate={setActive} />

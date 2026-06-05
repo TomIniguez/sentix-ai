@@ -6,7 +6,7 @@ export default function CategoryBarChart() {
   return (
     <div>
       {/* Segmented bar */}
-      <div className="flex h-4 w-full overflow-hidden rounded-full bg-white/5">
+      <div className="flex h-4 w-full overflow-hidden rounded-full bg-overlay/5">
         {categories.map((c) => (
           <div
             key={c.name}
@@ -23,7 +23,7 @@ export default function CategoryBarChart() {
           <div key={c.name} className="flex items-center gap-2.5">
             <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: c.color }} />
             <div className="min-w-0">
-              <p className="truncate text-sm text-slate-200">{c.name}</p>
+              <p className="truncate text-sm text-content-soft">{c.name}</p>
               <p className="text-xs text-faint">
                 <span className="font-semibold text-muted">{c.pct}%</span> · {c.count} incidentes
               </p>

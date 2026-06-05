@@ -2,6 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Theme tokens (RGB channels, consumed via rgb(var(--c-x) / a) in tailwind) ── */
+:root,
+[data-theme='dark'] {
+  --c-base: 11 15 25; /* #0B0F19 */
+  --c-panel: 17 24 39; /* #111827 */
+  --c-card: 30 41 59; /* #1E293B */
+  --c-elevated: 36 48 68; /* #243044 */
+  --c-hairline: 31 41 55; /* #1F2937 */
+  --c-stroke: 51 65 85; /* #334155 */
+  --c-muted: 148 163 184; /* slate-400 */
+  --c-faint: 100 116 139; /* slate-500 */
+  --c-content: 255 255 255; /* primary text */
+  --c-content-soft: 226 232 240; /* slate-200 */
+  --c-overlay: 255 255 255; /* hover wash base (white in dark) */
+
+  /* chart-specific full colors */
+  --chart-grid: #1f2937;
+  --chart-axis: #64748b;
+  --chart-tooltip-bg: #243044;
+  --chart-tooltip-border: #334155;
+  --scrollbar-thumb: #334155;
+}
+
+[data-theme='light'] {
+  --c-base: 248 250 252; /* slate-50 */
+  --c-panel: 255 255 255; /* white */
+  --c-card: 255 255 255; /* white */
+  --c-elevated: 255 255 255; /* white popovers */
+  --c-hairline: 226 232 240; /* slate-200 */
+  --c-stroke: 203 213 225; /* slate-300 */
+  --c-muted: 71 85 105; /* slate-600 */
+  --c-faint: 100 116 139; /* slate-500 */
+  --c-content: 15 23 42; /* slate-900 */
+  --c-content-soft: 51 65 85; /* slate-700 */
+  --c-overlay: 15 23 42; /* hover wash base (dark in light) */
+
+  --chart-grid: #e2e8f0;
+  --chart-axis: #94a3b8;
+  --chart-tooltip-bg: #ffffff;
+  --chart-tooltip-border: #e2e8f0;
+  --scrollbar-thumb: #cbd5e1;
+}
+
 @layer base {
   html,
   body,
@@ -10,7 +53,13 @@
   }
 
   body {
-    @apply bg-base text-slate-100 font-sans antialiased;
+    @apply bg-base text-content font-sans antialiased;
+  }
+
+  /* Smooth theme switch */
+  body,
+  body * {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
   }
 }
 
@@ -20,17 +69,17 @@
     @apply bg-gradient-to-r from-brandFrom to-brandTo bg-clip-text text-transparent;
   }
 
-  /* Thin custom scrollbars for the dark UI */
+  /* Thin custom scrollbars */
   .scroll-thin {
     scrollbar-width: thin;
-    scrollbar-color: #334155 transparent;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
   }
   .scroll-thin::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
   .scroll-thin::-webkit-scrollbar-thumb {
-    background-color: #334155;
+    background-color: var(--scrollbar-thumb);
     border-radius: 9999px;
   }
   .scroll-thin::-webkit-scrollbar-track {

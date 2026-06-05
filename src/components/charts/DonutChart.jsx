@@ -12,7 +12,7 @@ function DonutTooltip({ active, payload, total }) {
   const pct = total ? Math.round((p.value / total) * 100) : 0
   return (
     <div className="max-w-[220px] rounded-lg border border-stroke bg-elevated px-3 py-2 text-xs shadow-card">
-      <p className="font-medium text-white">{p.name}</p>
+      <p className="font-medium text-content">{p.name}</p>
       <p className="text-muted">
         {p.value} · {pct}%
       </p>
@@ -48,7 +48,7 @@ export default function DonutChart({ data, valueLabel = '', height = 240, legend
         </ResponsiveContainer>
         {/* Center total */}
         <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-2xl font-bold text-white">{total}</span>
+          <span className="text-2xl font-bold text-content">{total}</span>
           <span className="text-xs text-faint">{valueLabel}</span>
         </div>
       </div>
@@ -59,7 +59,7 @@ export default function DonutChart({ data, valueLabel = '', height = 240, legend
             <li key={i} className="flex items-center gap-2.5 text-sm">
               <span className="w-4 text-right text-xs font-semibold text-faint">{i + 1}</span>
               <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: d.color }} />
-              <span className="min-w-0 flex-1 truncate text-slate-200">{d.name}</span>
+              <span className="min-w-0 flex-1 truncate text-content-soft">{d.name}</span>
               <span className="shrink-0 font-semibold text-muted">{d.value}</span>
             </li>
           ))}

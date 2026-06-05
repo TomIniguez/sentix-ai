@@ -6,7 +6,7 @@ export default function KpiCard({ icon: Icon, label, value, accent = '#3B82F6', 
         <div>
           <p className="text-sm text-muted">{label}</p>
           <div className="mt-2 flex items-center gap-2">
-            <span className="text-3xl font-bold tracking-tight text-white">{value}</span>
+            <span className="text-3xl font-bold tracking-tight text-content">{value}</span>
             {children}
           </div>
           {sub && <p className="mt-1 text-xs text-faint">{sub}</p>}

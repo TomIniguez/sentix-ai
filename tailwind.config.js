@@ -4,16 +4,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Base surfaces (deep navy / slate dark theme)
-        base: '#0B0F19',
-        panel: '#111827',
-        card: '#1E293B',
-        elevated: '#243044',
-        hairline: '#1F2937',
-        stroke: '#334155',
-        muted: '#94A3B8',
-        faint: '#64748B',
-        // Brand gradient anchors
+        // Themeable surfaces & text — driven by CSS vars (see index.css).
+        // RGB-channel form so Tailwind opacity modifiers (e.g. bg-base/30) keep working.
+        base: 'rgb(var(--c-base) / <alpha-value>)',
+        panel: 'rgb(var(--c-panel) / <alpha-value>)',
+        card: 'rgb(var(--c-card) / <alpha-value>)',
+        elevated: 'rgb(var(--c-elevated) / <alpha-value>)',
+        hairline: 'rgb(var(--c-hairline) / <alpha-value>)',
+        stroke: 'rgb(var(--c-stroke) / <alpha-value>)',
+        muted: 'rgb(var(--c-muted) / <alpha-value>)',
+        faint: 'rgb(var(--c-faint) / <alpha-value>)',
+        content: 'rgb(var(--c-content) / <alpha-value>)',
+        'content-soft': 'rgb(var(--c-content-soft) / <alpha-value>)',
+        overlay: 'rgb(var(--c-overlay) / <alpha-value>)',
+        // Brand gradient anchors (theme-independent)
         brandFrom: '#3B82F6',
         brandTo: '#8B5CF6',
         // Category palette (matches data spec)

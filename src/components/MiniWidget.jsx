@@ -12,7 +12,7 @@ export default function MiniWidget({ title, icon: Icon, accent = '#8B5CF6', item
           >
             {Icon && <Icon size={15} />}
           </span>
-          <h4 className="text-sm font-semibold text-white">{title}</h4>
+          <h4 className="text-sm font-semibold text-content">{title}</h4>
         </div>
         <button onClick={onOpen} className="text-faint transition-colors hover:text-muted">
           <ChevronRight size={16} />
@@ -21,7 +21,7 @@ export default function MiniWidget({ title, icon: Icon, accent = '#8B5CF6', item
       <ul className="space-y-2.5">
         {items.map((it, i) => (
           <li key={i} className="flex items-center justify-between gap-2">
-            <span className="truncate text-sm text-slate-200">{it.title}</span>
+            <span className="truncate text-sm text-content-soft">{it.title}</span>
             <span className="shrink-0 text-xs text-faint">{it.meta}</span>
           </li>
         ))}

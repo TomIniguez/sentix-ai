@@ -11,7 +11,7 @@ export default function Dropdown({ value, options, onSelect, renderOption, rende
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="inline-flex items-center gap-1.5 rounded-lg px-2 py-1 text-sm transition-colors hover:bg-white/5 focus:outline-none focus:ring-1 focus:ring-stroke"
+        className="inline-flex items-center gap-1.5 rounded-lg px-2 py-1 text-sm transition-colors hover:bg-overlay/5 focus:outline-none focus:ring-1 focus:ring-stroke"
       >
         {renderTrigger ? renderTrigger(value) : value}
         <ChevronDown size={14} className={`text-faint transition-transform ${open ? 'rotate-180' : ''}`} />
@@ -32,8 +32,8 @@ export default function Dropdown({ value, options, onSelect, renderOption, rende
                   onSelect(opt)
                   setOpen(false)
                 }}
-                className={`flex w-full items-center gap-2 px-3 py-2 text-left text-sm transition-colors hover:bg-white/5 ${
-                  opt === value ? 'text-white' : 'text-muted'
+                className={`flex w-full items-center gap-2 px-3 py-2 text-left text-sm transition-colors hover:bg-overlay/5 ${
+                  opt === value ? 'text-content' : 'text-muted'
                 }`}
               >
                 {renderOption ? renderOption(opt) : opt}

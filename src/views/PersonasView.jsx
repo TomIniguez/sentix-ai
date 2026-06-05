@@ -34,7 +34,7 @@ export default function PersonasView() {
           <ul className="mt-4 space-y-2">
             {personas.map((p, i) => (
               <li key={i} className="flex items-center justify-between text-sm">
-                <span className="truncate text-slate-200">{p.name}</span>
+                <span className="truncate text-content-soft">{p.name}</span>
                 <span className="text-faint">{Math.round((p.events / totalEvents) * 100)}%</span>
               </li>
             ))}
@@ -57,25 +57,25 @@ export default function PersonasView() {
               </thead>
               <tbody className="divide-y divide-hairline">
                 {personas.map((p, i) => (
-                  <tr key={i} className="transition-colors hover:bg-white/[0.025]">
+                  <tr key={i} className="transition-colors hover:bg-overlay/[0.025]">
                     <td className="px-5 py-3">
                       <div className="flex items-center gap-3">
-                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brandFrom/30 to-brandTo/30 text-xs font-semibold text-white">
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brandFrom/30 to-brandTo/30 text-xs font-semibold text-content">
                           {p.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
                         </span>
                         <div className="min-w-0">
-                          <p className="truncate font-medium text-slate-100">{p.name}</p>
+                          <p className="truncate font-medium text-content">{p.name}</p>
                           <p className="truncate text-xs text-faint">{p.email}</p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-5 py-3 text-center font-semibold text-slate-200">{p.events}</td>
+                    <td className="px-5 py-3 text-center font-semibold text-content-soft">{p.events}</td>
                     <td className="px-5 py-3">
                       <div className="flex justify-center">
                         <SentimentEmoji value={p.sentiment} size="sm" />
                       </div>
                     </td>
-                    <td className="px-5 py-3 text-center text-slate-200">{p.resolution}%</td>
+                    <td className="px-5 py-3 text-center text-content-soft">{p.resolution}%</td>
                     <td className="px-5 py-3">
                       <ChurnBadge level={p.churn} />
                     </td>

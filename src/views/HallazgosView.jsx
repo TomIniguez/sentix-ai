@@ -53,16 +53,16 @@ export default function HallazgosView() {
             </thead>
             <tbody className="divide-y divide-hairline">
               {rows.map((r) => (
-                <tr key={r.id} className="transition-colors hover:bg-white/[0.025]">
+                <tr key={r.id} className="transition-colors hover:bg-overlay/[0.025]">
                   <td className="max-w-[280px] px-5 py-3">
-                    <p className="truncate font-medium text-slate-100">{r.title}</p>
+                    <p className="truncate font-medium text-content">{r.title}</p>
                     <p className="text-xs text-faint">{r.id}</p>
                   </td>
                   <td className="px-5 py-3">
                     <CategoryBadge category={r.category} />
                   </td>
                   <td className="px-5 py-3 text-center">
-                    <span className="font-semibold text-slate-200">{r.incidents}</span>
+                    <span className="font-semibold text-content-soft">{r.incidents}</span>
                   </td>
                   <td className="px-5 py-3">
                     <div className="flex justify-center">
