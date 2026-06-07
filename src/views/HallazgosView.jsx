@@ -8,7 +8,7 @@ import SentimentEmoji from '../components/SentimentEmoji'
 import PriorityFlag from '../components/PriorityFlag'
 import StatusDropdown from '../components/StatusDropdown'
 import DonutChart from '../components/charts/DonutChart'
-import { kpisAllTime, topHallazgos, hallazgosTable } from '../data/mockData'
+import { kpisAllTime, topHallazgos, hallazgosTable, keyPhrases, sentimentMap } from '../data/mockData'
 
 export default function HallazgosView() {
   const [dateRange, setDateRange] = useState('Últimos 30 días')
@@ -34,6 +34,25 @@ export default function HallazgosView() {
       {/* Big donut */}
       <Panel title="Top 10 Hallazgos" subtitle="Insights con mayor número de incidentes">
         <DonutChart data={pie} valueLabel="incidentes" height={280} maxLegend={10} />
+      </Panel>
+
+      {/* Key phrases */}
+      <Panel title="Frases Clave" subtitle="Expresiones recurrentes detectadas en los tickets">
+        <div className="flex flex-wrap gap-2.5">
+          {keyPhrases.map((p) => {
+            const color = (sentimentMap[p.sentiment] || sentimentMap.neutral).color
+            return (
+              <span
+                key={p.phrase}
+                className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm"
+                style={{ color, backgroundColor: `${color}14`, boxShadow: `inset 0 0 0 1px ${color}33` }}
+              >
+                {p.phrase}
+                <span className="text-xs font-semibold opacity-80">{p.count}</span>
+              </span>
+            )
+          })}
+        </div>
       </Panel>
 
       {/* Data table */}

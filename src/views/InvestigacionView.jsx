@@ -5,6 +5,7 @@ import TopBar from '../components/TopBar'
 import KpiCard from '../components/KpiCard'
 import Panel from '../components/Panel'
 import SentimentEmoji from '../components/SentimentEmoji'
+import ScopeBadge from '../components/ScopeBadge'
 import useChartColors from '../components/charts/useChartColors'
 import { simulationScenario, simulationResults, syntheticUsers, simulationHistory } from '../data/mockData'
 
@@ -40,16 +41,20 @@ export default function InvestigacionView() {
             <FlaskConical size={24} className="text-white" />
           </span>
           <div>
-            <h2 className="flex items-center gap-2 text-lg font-bold text-content">
+            <h2 className="flex flex-wrap items-center gap-2 text-lg font-bold text-content">
               Laboratorio de Clientes IA
               <span className="inline-flex items-center gap-1 rounded-full bg-overlay/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-brandTo">
                 <Sparkles size={11} /> Beta
               </span>
+              <ScopeBadge />
             </h2>
             <p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted">
               Simulá la reacción de tus clientes con <span className="text-content-soft">usuarios sintéticos</span> antes
               de enviar una encuesta CSAT o NPS. Sentix AI estima la tasa de respuesta, el puntaje esperado y el riesgo
               de <span className="text-content-soft">survey fatigue</span> para optimizar la redacción y el momento de envío.
+            </p>
+            <p className="mt-2 text-xs font-medium text-amber-400/90">
+              Funcionalidad fuera del alcance del MVP — planificada en el roadmap (Año 2).
             </p>
           </div>
         </div>

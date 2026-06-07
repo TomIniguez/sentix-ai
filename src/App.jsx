@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Sidebar from './components/Sidebar'
 import InicioView from './views/InicioView'
+import TicketsView from './views/TicketsView'
 import HallazgosView from './views/HallazgosView'
 import TemasView from './views/TemasView'
 import PersonasView from './views/PersonasView'
@@ -40,6 +41,8 @@ export default function App() {
     switch (active) {
       case 'inicio':
         return <InicioView onNavigate={setActive} />
+      case 'tickets':
+        return <TicketsView />
       case 'hallazgos':
         return <HallazgosView />
       case 'temas':

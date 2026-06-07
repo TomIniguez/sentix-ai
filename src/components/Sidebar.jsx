@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import {
   Home,
+  Ticket,
   Lightbulb,
   Layers,
   Users,
@@ -27,6 +28,7 @@ import { useTheme } from '../context/ThemeContext'
 
 const NAV = [
   { key: 'inicio', label: 'Inicio', icon: Home },
+  { key: 'tickets', label: 'Tickets', icon: Ticket },
   { key: 'hallazgos', label: 'Hallazgos', icon: Lightbulb },
   { key: 'temas', label: 'Temas', icon: Layers },
 ]
@@ -38,7 +40,7 @@ const CLIENTES = [
 ]
 
 const FOOTER_NAV = [
-  { key: 'investigacion', label: 'Investigación', icon: FlaskConical },
+  { key: 'investigacion', label: 'Investigación', icon: FlaskConical, badge: 'Post-MVP' },
   { key: 'informes', label: 'Informes', icon: FileBarChart },
 ]
 
@@ -71,6 +73,14 @@ function NavItem({ item, active, onSelect, indent = false }) {
         />
       )}
       {item.label}
+      {item.badge && (
+        <span
+          className="ml-auto rounded-full px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide"
+          style={{ color: '#F59E0B', backgroundColor: 'rgba(245,158,11,0.14)' }}
+        >
+          {item.badge}
+        </span>
+      )}
     </button>
   )
 }

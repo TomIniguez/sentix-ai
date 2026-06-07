@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import { PlugZap, Plug, CheckCircle2, Plus, MessagesSquare, Ticket, ShoppingBag, Headphones, MessageCircle } from 'lucide-react'
+import { PlugZap, Plug, CheckCircle2, Plus, MessagesSquare, Ticket, ShoppingBag, Headphones, MessageCircle, Contact } from 'lucide-react'
 import { integrations } from '../data/mockData'
 
 // Approximate brand marks with colored tiles + a representative lucide icon
 // (real logos aren't bundled in this prototype).
 const ICONS = {
-  Intercom: MessagesSquare,
   Zendesk: Ticket,
+  HubSpot: Contact,
+  Intercom: MessagesSquare,
   Gorgias: ShoppingBag,
   Freshdesk: Headphones,
   Freshchat: MessageCircle,
@@ -25,7 +26,17 @@ function IntegrationCard({ item, connected, onConnect }) {
             <Icon size={22} />
           </span>
           <div>
-            <h3 className="font-semibold text-content">{item.name}</h3>
+            <div className="flex items-center gap-2">
+              <h3 className="font-semibold text-content">{item.name}</h3>
+              {item.mvp && (
+                <span
+                  className="rounded-full px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide"
+                  style={{ color: '#8B5CF6', backgroundColor: 'rgba(139,92,246,0.14)' }}
+                >
+                  MVP
+                </span>
+              )}
+            </div>
             <p className="text-xs text-faint">{item.category}</p>
           </div>
         </div>
